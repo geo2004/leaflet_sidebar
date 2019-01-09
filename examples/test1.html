@@ -112,24 +112,24 @@ var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStree
 			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
 			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 		mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
-    
+    var esri = require("esri-leaflet");
     var gray = L.layerGroup();
   // more than one service can be grouped together and passed to the control together
-  L.esri.basemapLayer("DarkGray").addTo(gray);
-  L.esri.basemapLayer("GrayLabels").addTo(gray);
+  esri.basemapLayer("DarkGray").addTo(gray);
+  esri.basemapLayer("GrayLabels").addTo(gray);
   
 	var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox.light'}),
 		streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets'});
         satellites  = L.tileLayer(mbUrl, {id: 'mapbox.satellite'});
         
-          var pkp = L.esri.featureLayer({
+          var pkp = esri.featureLayer({
       url: "https://sigi.pu.go.id/portalpupr2/rest/services/SatuPeta/Peta_PKP/FeatureServer/0",
       style: function (feature) {
           return {color: '#55b4da', weight: 1 };
       }
   });
          
- var iplt = L.esri.dynamicMapLayer({
+ var iplt = esri.dynamicMapLayer({
   url: 'https://sigi.pu.go.id/portalpupr2/rest/services/SatuPeta/Satu_Peta_IPLT/MapServer',
 	   useCors: true,
     layers: [0],
