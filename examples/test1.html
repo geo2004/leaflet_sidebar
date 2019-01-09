@@ -115,21 +115,21 @@ var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStree
     
     var gray = L.layerGroup();
   // more than one service can be grouped together and passed to the control together
-  esri.basemapLayer("DarkGray").addTo(gray);
-  esri.basemapLayer("GrayLabels").addTo(gray);
+  L.esri.basemapLayer("DarkGray").addTo(gray);
+  L.esri.basemapLayer("GrayLabels").addTo(gray);
   
 	var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox.light'}),
 		streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets'});
         satellites  = L.tileLayer(mbUrl, {id: 'mapbox.satellite'});
         
-          var pkp = esri.featureLayer({
+          var pkp = L.esri.featureLayer({
       url: "https://sigi.pu.go.id/portalpupr2/rest/services/SatuPeta/Peta_PKP/FeatureServer/0",
       style: function (feature) {
           return {color: '#55b4da', weight: 1 };
       }
   });
          
- var iplt = esri.dynamicMapLayer({
+ var iplt = L.esri.dynamicMapLayer({
   url: 'https://sigi.pu.go.id/portalpupr2/rest/services/SatuPeta/Satu_Peta_IPLT/MapServer',
 	   useCors: true,
     layers: [0],
