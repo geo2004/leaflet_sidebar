@@ -11,7 +11,8 @@
 
 	    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==" crossorigin=""></script>
-    
+    <script src="../css/L.Control.MousePosition.css" charset="utf-8"></script>
+	   <script src="../css/leaflet-control-boxzoom.css" charset="utf-8"></script>
 	
  
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -107,8 +108,9 @@
     integrity="sha512-zdT4Pc2tIrc6uoYly2Wp8jh6EPEWaveqqD3sT0lf5yei19BC1WulGuh5CesB0ldBKZieKGD7Qyf/G0jdSe016A=="
     crossorigin=""></script>
 	<script src="../js/L.Control.MousePosition.js" charset="utf-8"></script>
+	<script src="../js/leaflet-control-boxzoom.js" charset="utf-8"></script>
 	<script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol@0.66.0/dist/L.Control.Locate.min.js" charset="utf-8"></script>
-	<script src="../css/L.Control.MousePosition.css" charset="utf-8"></script>
+	
     <script>
 var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
 			'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -156,7 +158,10 @@ var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStree
 	};
     L.control.layers(baseLayers,overlays,{}, {collapsed: true}).addTo(map);
 	L.control.scale().addTo(map);
-  var lc = L.control.locate({
+  L.Control.boxzoom({
+            position:'topleft',
+        }).addTo(map);
+	    var lc = L.control.locate({
     position: 'topleft',
     strings: {
         title: "Zoom to your location"
